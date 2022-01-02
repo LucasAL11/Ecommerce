@@ -55,7 +55,8 @@ def account_register(request):
     else:
         registerForm = RegistrationForm()
     return render(request,'account/registration/register.html', {'forms': registerForm})
-account
+
+
 def account_activate(request, uidb64, token):
     #try to get the user in the DB 
     try:
