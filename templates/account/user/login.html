@@ -1,0 +1,79 @@
+{% extends "../../store/base.html" %}
+{% block title%}Entrar{% endblock %}
+{% load static %}
+{% static 'templates/static/css/main.css' %}
+{% block content %}
+
+
+<style>
+
+    
+    .account-form input{
+        border: 2px solid #ccc;
+        height: calc(2em+ .75rem + 2px);
+        border: none;
+        border-bottom: 2px solid blue;
+        
+
+    }
+    .account-form input:focus{
+        border-color: #1497ff;
+        
+    }   
+    .color-change{
+        background-color: #ffffff;
+       
+    }
+    body{
+        background-color:#ecf0f1;
+    }
+
+    .mysb{
+        box-shadow: 0px 0px 20px 0px rgba(31, 30, 30, 0.52);
+        border-radius: 30px 0px 30px 0px;
+    }
+    
+</style>
+
+<div class="container-fluid loginbody">
+    <div class="row no-gutter">
+        <div class="col-md-12 ">
+            <div class="login d-flex align-items-center py-5 ">
+                <div class="container ">
+                    <div class="row ">
+                        <div class="col-5 col-lg-16 mx-auto color-change mysb ">
+                            <form action="{% url 'users:login' %}" method="post" class="account-form p-4 rounded">
+
+                            {% csrf_token %}
+                            <h3 class="mb-4"></h3>
+
+                            {% if forms.error %}
+                            <div class="alert alert-primary" role="alert">
+                                dados incorretos
+                            </div>
+                            {% endif %}
+
+                            <label class="form-label">{{ form.username.label }}</label>
+                            {{ form.username }}
+
+                            <label for="" class="form-label">{{ form.password.label }}</label>
+                            {{ form.password }}
+
+                            <div class=" d-grip gap-3 d-flex flex-row-reverse">
+                                <input type="hidden" name="next" value="{{ next }}">
+                                <button class="btn btn-primary mb-4 mt-5 fw-bold" type="submit" value="login">Login</button>
+                            </div>
+                            <p class="text-center pb-4">
+                                Não tem conta? <a href="{% url 'users:register' %}">Registre-se</a>
+                            </p>
+
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
