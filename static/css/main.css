@@ -6,13 +6,12 @@
    box-sizing: border-box;
    margin: 0;
    padding: 0;
+  
 }
 
 
-
-.nav-item{
-    padding: 20px 10px;
-    
+body{
+    background-color: rgb(121, 119, 119);
 }
 
 .nav-item a{
@@ -29,3 +28,44 @@
 .nav-search{
     flex-grow: 1;
 }
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.account-forms{
+    background-color: #fff;    
+}
+.account-forms input {
+        
+        border: 2px solid #ccc;
+        height: calc(2em+ .75rem + 2px);
+        border: none;
+        border-bottom: 2px solid blue;
+}
+
+.users-form input:focus {
+    border-color: #1497ff;
+   
+}
+
+.users-form input {
+        
+    border: 2px solid #ccc;
+    height: calc(2em+ .75rem + 2px);
+    border: none;
+    border-bottom: 2px solid blue;
+}
+
+.account-forms input:focus {
+border-color: #1497ff;
+
+}
+
+.mysb{
+    box-shadow: 0px 0px 20px 0px rgba(31, 30, 30, 0.52);
+    border-radius: 20px 0px 30px 0px;
+}
+

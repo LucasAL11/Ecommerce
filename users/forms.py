@@ -142,38 +142,19 @@ class PwdResetForm(PasswordResetForm):
 class UserEditForm(forms.ModelForm):
 
     email = forms.EmailField(
-        label='Email', 
-        max_length=200,
-        widget=forms.TextInput(
-            attrs={
-                'class':'form-control mb-3',
-                'placeholder':'email',
-                'id':'form-email',
-                'readonly':'readonly'
-                }
-            )
-        )
-    
+        label='Email', max_length=200, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'email', 'id': 'form-email', 'readonly': 'readonly'}))
+
     user_name = forms.CharField(
-        label='Nome completo',
-        min_length=4,
-        max_length=20,clean
-        widget=TextInput(
-            attrs={
-                'class':'form-control mb-3',
-                'placehholder':'Usuario',
-                'id':'FirstName'
-            }
-        )
-    )
+        label='Nome completo', min_length=4, max_length=50, widget=forms.TextInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'nome completo', 'id': 'form-user-name'}))
 
     class Meta:
         model = UserBase
         fields = ('email', 'user_name')
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args,**kwargs)
-        self.fields['user_name'].required = True
-        self.fields['email'].required = True
 
-    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].required = True
+        self.fields['user_name'].required = True
+        
