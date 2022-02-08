@@ -131,12 +131,20 @@ class PwdResetForm(PasswordResetForm):
     email = forms.EmailField(max_length=254, widget=forms.TextInput(
         attrs={'class': 'form-control mb-3', 'placeholder': 'Email', 'id': 'form-email'}))
 
-    def clean_mail(self):
+    def clean_email(self):
         email = self.cleaned_data['email']
-        user_mail = UserBase.objects.filter(email=email)
-        if not user_mail:
-            "não foi encontrado nenhum email"
+        useremail = UserBase.objects.filter(email=email)
+        if not useremail: 
+            raise forms.ValidationError('email invalido')
         return email
+
+class PwdResetConfirmForm(SetPasswordForm):
+    new_password1 = forms.CharField(
+        label='New password', widget=forms.PasswordInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-newpass'}))
+    new_password2 = forms.CharField(
+        label='Repeat password', widget=forms.PasswordInput(
+            attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-new-pass2'}))
 
 
 class UserEditForm(forms.ModelForm):
@@ -157,4 +165,5 @@ class UserEditForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
         self.fields['user_name'].required = True
-        
+
+

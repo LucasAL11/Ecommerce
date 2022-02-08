@@ -1,18 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 
+
+
 * {
+   box-sizing: border-box;
    font-family: 'Roboto', sans-serif; 
    box-sizing: border-box;
    margin: 0;
-   padding: 0;
-  
+   padding: 0;  
+}
+
+.mycfg {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
 }
 
 
-body{
-    background-color: rgb(121, 119, 119);
-}
 
 .nav-item a{
     text-decoration: none;
@@ -30,13 +37,13 @@ body{
 }
 
 footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
 
 .account-forms{
-    background-color: #fff;    
+    background-color: rgb(255, 254, 254);    
 }
 .account-forms input {
         
@@ -54,7 +61,7 @@ footer{
 .users-form input {
         
     border: 2px solid #ccc;
-    height: calc(2em+ .75rem + 2px);
+    height: calc(2em + .75rem + 2px);
     border: none;
     border-bottom: 2px solid blue;
 }
@@ -64,8 +71,58 @@ border-color: #1497ff;
 
 }
 
+
+form-email input{
+    border: 2px solid #ccc;
+    height:calc(2em + .75em + 2px);
+    border: none;
+    border-bottom: 2px solid blue;
+}
+
 .mysb{
-    box-shadow: 0px 0px 20px 0px rgba(31, 30, 30, 0.52);
+    box-shadow: 0px 0px 20px 0px rgba(189, 185, 185, 0.52);
     border-radius: 20px 0px 30px 0px;
 }
 
+
+.product-title{
+    font-size: 0.8em;
+    letter-spacing: 1.2px;
+}
+
+.produtct-details{
+    display: grid;
+    grid-template-columns: 0.9fr 1fr;
+    margin: auto;
+    padding-inline-end: 2.5em;
+    min-width: 600px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.product-photo{
+    position: relative;
+}
+
+.product-photo-container{
+    position: absolute;
+    left: -2.5em;
+    display: grid;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    box-shadow: 4px 4px 25px -2px rgba(0,0,0,0.3);
+}
+
+.product-photo-main{
+    border-radius: 6px 6px 0 0;
+    background-color: radial-gradient(#1497ff,#ccc);
+}
+
+.product-photo-controls{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8em;
+    color: white;
+}
