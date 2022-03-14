@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.admin.decorators import display
+
 from django.db import models
 from .models import Categories,Brands,Products,Distributors
 

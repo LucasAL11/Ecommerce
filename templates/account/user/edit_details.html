@@ -43,12 +43,17 @@
 
 
                     <button class="btn btn-primary btn-block py-2 mb-4 mt-5 fw-bold w-100" type="submit"
-                        value="Save changes">Save Changes</button>
+                        value="Save changes">Salvar</button>
                     
+                    <form action="{% url "account:delete_user" %}" class="account-form" method="post">
+                        {% csrf_token %}
+
                         <p class=" h3 pt-4 font-weight-bold">Delete Account</p>
                         <p>Are you sure you want to delete your account?</p>
                         <button type="submit" role="button"
                             class="btn btn-danger btn-block py-2 mb-4 mt-5 fw-bold w-100">Delete</button> 
+                        
+                            <p>Trocar senha</p><a href="{% url "users:pwdreset" %}"> clique aqui</a>
                 </form>
                 
                 

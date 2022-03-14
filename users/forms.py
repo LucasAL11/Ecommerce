@@ -1,4 +1,5 @@
 #Gerenciador de formularios do APP user
+from cProfile import label
 from django import forms
 from django.contrib.auth.forms import (AuthenticationForm, PasswordResetForm, SetPasswordForm)
 from django.core.exceptions import ValidationError
@@ -156,6 +157,15 @@ class UserEditForm(forms.ModelForm):
     user_name = forms.CharField(
         label='Nome completo', min_length=4, max_length=50, widget=forms.TextInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'nome completo', 'id': 'form-user-name'}))
+
+    #possivel alteração sera definir uma classe apenas para aleteração de senha 
+    #via perfil de usuario juntanmeter a um template propio
+    password = forms.CharField(label='Senha', max_length=20, widget=forms.PasswordInput(
+        attrs={
+            'class':'form-control mb3', 'placeholder':'senha','id':'form-password'
+            }
+        )          
+    )  
 
     class Meta:
         model = UserBase

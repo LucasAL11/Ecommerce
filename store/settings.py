@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-nv5n5u&+%l^@_5spd7c2)k(7cfj7xz0jbcj355p=p%i+6&n=+h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'products',
     'cart',
     'users',
+    'payment',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +150,8 @@ LOGIN_URL = '/account/login/'
 
 #email settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#pagamentos com stripe
+PUBLISHIABLE_KEY = 'pk_test_51KX5arLvDIT3jWikCrBH1b5jsW12D4fL81PJnH1RjCVqKTScj3bC28uI5qmdqj5EtccIEO6z7qBzXMq5kpXzJITJ0030qYHEGq'
+SECRET_KEY = 'sk_test_51KX5arLvDIT3jWikaFJMn2sgbHEbGsLcj0lxM14x8HDyJrXiKw11fhYOcEWq8n1o1o33KBCGHX4ZVoMNGeht7ZTs00b8xbOSWT'
+STRIPE_ENDPOINT_SECRET = "whsec_93105864a53128d457d5ce7a551948911148e002100e5c22511a048b052bb6fb"
