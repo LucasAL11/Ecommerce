@@ -79,11 +79,12 @@
                       Please provide a valid state.
                     </div>
                   </div>
+                  
                   <div class="col-md-3">
-                    <label for="Postcode" class="form-label">Postcode</label>
+                    <label for="Postcode" class="form-label">CEP</label>
                     <input type="text" class="form-control" id="postCode" placeholder="" required>
                     <div class="invalid-feedback">
-                      Zip code required.
+                      CEP obrigatorio
                     </div>
                   </div>
                 </div>
@@ -111,6 +112,7 @@
 </script>
 <script src="https://js.stripe.com/v3/"></script>
 <script src="{% static 'payment/index.js' %}" data-rel-js></script>
+<script src="{% static 'payment/cep.js' %}"></script>
 
 {% endblock %}
 

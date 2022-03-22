@@ -1,4 +1,8 @@
 from products.models import Products
+from django.conf import settings
+
+
+from store.settings import CART_SESSION_ID
 
 
 class Cart():
@@ -6,9 +10,9 @@ class Cart():
 
     def __init__(self, request):
         self.session = request.session
-        cart = self.session.get('skey')
-        if 'skey' not in request.session:
-            cart = self.session['skey'] ={}
+        cart = self.session.get(settings.CART_SESSION_ID)
+        if CART_SESSION_ID not in request.session:
+            cart = self.session[CART_SESSION_ID] ={}
         self.cart = cart
 
     def add(self, product, qty):
@@ -67,5 +71,5 @@ class Cart():
         self.session.modified = True
 
     def clear(self):
-        del self.session['skey']
+        del self.session[CART_SESSION_ID]
         self.save()

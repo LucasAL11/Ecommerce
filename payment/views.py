@@ -1,5 +1,6 @@
 import json
 from operator import ipow
+from unicodedata import decimal
 
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
@@ -19,9 +20,11 @@ def order_placed(request):
 
 @login_required
 def PaymentHome(request):
+
     cart = Cart(request)
     total = str(cart.get_total_price())
     total = total.replace('.','')
+    total = int(total)
 
     stripe.api_key = 'sk_test_51KX5arLvDIT3jWikaFJMn2sgbHEbGsLcj0lxM14x8HDyJrXiKw11fhYOcEWq8n1o1o33KBCGHX4ZVoMNGeht7ZTs00b8xbOSWT'
     intend = stripe.PaymentIntent.create(

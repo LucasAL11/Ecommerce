@@ -28,8 +28,9 @@ urlpatterns = [
                                                                                                 success_url='password_reset_complete/',
                                                                                                 form_class=PwdResetConfirmForm),name='pwdresetc'),
     
+
     path('password_reset/password_reset_email_confirm', TemplateView.as_view(template_name='account/user/reset_status.html'),name='password_reset_done'),
-    path('passsword_reset_comfirm/Mjc/password_reset_complete/', TemplateView.as_view(template_name="account/user/reset_status.html"), name='password_reset_complete'),
+    path('password_reset_complete/', TemplateView.as_view(template_name="account/user/reset_status.html"), name='password_reset_complete'),
 
 
     #Dashboard

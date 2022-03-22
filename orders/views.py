@@ -36,5 +36,6 @@ def payment_confirmation(data):
 
 def user_orders(request):
     user_id = request.user.id
-    orders = Order.objects.filter(user_id=user_id).update(billing_status=True)
+    orders = Order.objects.filter(user_id=user_id).filter(billing_status=True)
+    
     return orders

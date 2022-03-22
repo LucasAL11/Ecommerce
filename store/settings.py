@@ -142,11 +142,21 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'MEDIA/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
+#id de sessão do carrinho
+CART_SESSION_ID = 'cart'
+
+
 #Custom user model
 
 AUTH_USER_MODEL = 'users.UserBase'
 LOGIN_REDIRECT_URL = '/account/dashboard'
 LOGIN_URL = '/account/login/'
+
+
+
+
 
 #email settings
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

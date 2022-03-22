@@ -1,4 +1,7 @@
+from audioop import maxpp
 from decimal import Decimal
+from operator import truediv
+from pyexpat import model
 from django.conf import settings
 from django.db import models
 
@@ -8,9 +11,11 @@ from products.models import Products
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='order_user')
     full_name = models.CharField(max_length=50)
-    address1 = models.CharField(max_length=250)
-    address2 = models.CharField(max_length=250)
+    district = models.CharField(max_length=250)
+    street = models.CharField(max_length=250)
     city = models.CharField(max_length=100)
+    number = models.CharField(max_length=10, null=True)
+    complement = models.CharField(max_length=250, null=True)
     phone = models.CharField(max_length=100)
     post_code = models.CharField(max_length=20)
     created = models.DateTimeField(auto_now_add=True)
