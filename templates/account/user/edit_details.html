@@ -1,4 +1,4 @@
-{% extends "../../store/base.html" %}
+{% extends "base.html" %}
 {% block title %}Editar dados{% endblock %}
 {% load static %}
 {% block content %}
@@ -21,7 +21,7 @@
                         Dados autualizados com sucesso
                     </div>
                     <p class="small text-center pt-0">
-                        <a href="{% url "users:dashboard" %}">Perfil</a>
+                        <a href="{% url "users:profile" %}">Perfil</a>
                     </p>
                     {%else%}
                     <h3 class="pb-4">Atualize seus dados</h3>

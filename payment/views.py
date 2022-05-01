@@ -1,22 +1,26 @@
 import json
-from operator import ipow
-from unicodedata import decimal
+import os
 
+import stripe
+
+from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
 from django.http import HttpResponse
-import stripe
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from cart.cart import Cart
 from orders.views import payment_confirmation  
 
+
 def order_placed(request):
     cart = Cart(request)
     cart.clear()
     return render(request, 'payment/orderplaced.html')
 
+class Error(TemplateView):
+    template_name = 'payment/error.html'
 
 @login_required
 def PaymentHome(request):
@@ -26,14 +30,14 @@ def PaymentHome(request):
     total = total.replace('.','')
     total = int(total)
 
-    stripe.api_key = 'sk_test_51KX5arLvDIT3jWikaFJMn2sgbHEbGsLcj0lxM14x8HDyJrXiKw11fhYOcEWq8n1o1o33KBCGHX4ZVoMNGeht7ZTs00b8xbOSWT'
+    stripe.api_key = settings.SECRET_KEY
     intend = stripe.PaymentIntent.create(
         amount = total,
         currency = 'BRL',
         metadata = {'userid': request.user.id }
     )
 
-    return render(request, 'payment/home.html', {'client_secret': intend.client_secret})
+    return render(request, 'payment/home.html', {'client_secret': intend.client_secret, 'STRIPE_PUBLISHABLE_KEY': os.environ.get('STRIPE_PUBLISHABLE_KEY')})
 
 
 @csrf_exempt

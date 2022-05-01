@@ -17,7 +17,7 @@ class Order(models.Model):
     number = models.CharField(max_length=10, null=True)
     complement = models.CharField(max_length=250, null=True)
     phone = models.CharField(max_length=100)
-    post_code = models.CharField(max_length=20)
+    cep = models.CharField(max_length=20)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     total_paid = models.DecimalField(max_digits=10, decimal_places=2)

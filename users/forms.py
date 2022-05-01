@@ -1,15 +1,11 @@
 #Gerenciador de formularios do APP user
-from cProfile import label
 from django import forms
 from django.contrib.auth.forms import (AuthenticationForm, PasswordResetForm, SetPasswordForm)
-from django.core.exceptions import ValidationError
-from django.forms import fields
-from django.forms.fields import EmailField
-from django.forms.widgets import TextInput
+
 from .models import UserBase
 
 
-#formulario de login
+#Login Forms 
 class UserLoginForm(AuthenticationForm):
     #define que a variavel username sera um campo de texto e seus atributos cs
     username = forms.CharField(widget=forms.TextInput(attrs=

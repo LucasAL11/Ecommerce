@@ -151,7 +151,7 @@ CART_SESSION_ID = 'cart'
 #Custom user model
 
 AUTH_USER_MODEL = 'users.UserBase'
-LOGIN_REDIRECT_URL = '/account/dashboard'
+LOGIN_REDIRECT_URL = '/account/profile'
 LOGIN_URL = '/account/login/'
 
 

@@ -1,5 +1,3 @@
-
-
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
@@ -22,17 +20,14 @@ from .tokens import account_activation_token
 # Create your views here.
 
 @login_required
-def dashboard(request):
+def profile(request):
     orders = user_orders(request)
     return render(request,
-                  'account/user/dashboard.html',
+                  'account/user/profile.html',
                   {'section': 'profile', 'orders': orders})
 
 
-
 def edit_details(request):
-    
-    
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
         
@@ -43,6 +38,7 @@ def edit_details(request):
         user_form = UserEditForm(instance=request.user)
             
     return render(request,'account/user/edit_details.html', {'user_form':user_form})
+
 
 @login_required
 def delete_user(request):
@@ -58,7 +54,7 @@ def delete_user(request):
 def account_register(request):
 
     if request.user.is_authenticated:
-        return redirect('users:dashboard')
+        return redirect('users:profile')
 
     if request.method == "POST":
         registerForm = RegistrationForm(request.POST)
@@ -79,7 +75,7 @@ def account_register(request):
             })
             user.email_user(subject=subject, message=message)
             
-            return HttpResponse('Registrado com sucesso, ative sua conta')
+            return render(request, 'account/registration/account_created.html')
     else:
         registerForm = RegistrationForm()
     return render(request,'account/registration/register.html', {'forms': registerForm})
@@ -96,6 +92,6 @@ def account_activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return redirect('users:dashboard')
+        return redirect('users:profile')
     else:
         return render(request, 'account/registration/activation_invalid.html')

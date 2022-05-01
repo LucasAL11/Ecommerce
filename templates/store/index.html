@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+
+
+<main>
+
+  <div class="album py-5">
+    <div class="container">
+      
+     
+      <div class="pb-3 h5">Novos os produtos</div>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+            <div class="card-deck">
+                
+              {% for product in products %}
+                <div class="card" >
+                <img class="card-img-top"   width='300px' height='250px' src="{{ product.image.url }}" alt="Card image cap">
+                <div class="card-body">
+                <h5 class="card-title"><a class="stretched-link no-decoration" href="{{product.get_absolute_url}}"> {{ product.product.upper }} </a></h5>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text"><small class="text-muted">{{ product.price }}</small></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+</main>
+
+{% endblock %}

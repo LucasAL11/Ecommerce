@@ -1,5 +1,6 @@
 import json
 from urllib import response
+from webbrowser import get
 from django.http import JsonResponse
 from django.shortcuts import render
 
@@ -9,19 +10,23 @@ from .models import Order, OrderItem
 
 def add(request):
     cart = Cart(request)
-    if request.POST.get('action') == 'post':
+    if request.method == 'POST':
 
         order_key = request.POST.get('order_key')
+        data = {
+            #data reciveid forom ajax
+        }
         user_id = request.user.id
+        name = request.user.user_name
         cartTotal = cart.get_total_price()
 
-        #verifica se existe o pedido
+        #verify existents orders
 
         if Order.objects.filter(order_key=order_key).exists():
             pass
         else:
-            order = Order.objects.create(user_id=user_id, full_name='name', address1='add1',
-                                address2='add2', total_paid=cartTotal, order_key=order_key)
+            order = Order.objects.create(user_id=user_id, full_name=name, district='district',
+                                street='street', total_paid=cartTotal, order_key=order_key)
             order_id = order.pk
 
             for item in cart:

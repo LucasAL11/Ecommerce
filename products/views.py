@@ -9,13 +9,13 @@ def categories(request):
 
 def all_products(request):
     products = Products.products.all()
-    return render(request, 'store/home.html', { 'products': products})
+    return render(request, 'store/index.html', { 'products': products})
 
 def product_details(request,slug):
     product = get_object_or_404(Products, Slug=slug, is_active=True)
-    return render(request, 'store/products/single.html', {'product': product})
+    return render(request, 'store/single.html', {'product': product})
 
 def per_category(request, category_slug):
     category = get_object_or_404(Categories, slug=category_slug)
     product = Products.products.filter(category=category)
-    return render(request, 'store/products/category.html',{'category':category,'product':product})
+    return render(request, 'store/category.html',{'category':category,'product':product})
