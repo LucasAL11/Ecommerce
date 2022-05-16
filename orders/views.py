@@ -26,7 +26,7 @@ def add(request):
             pass
         else:
             order = Order.objects.create(user_id=user_id, full_name=name, district='district',
-                                street='street', total_paid=cartTotal, order_key=order_key)
+                                street='street',number='245',city='city',complement='fakedata', phone="99-88888-7777",cep='12345678', total_paid=cartTotal, order_key=order_key)
             order_id = order.pk
 
             for item in cart:

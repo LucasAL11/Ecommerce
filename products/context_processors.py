@@ -1,6 +1,5 @@
-from .models import Categories
+
+from .models import Category
 
 def categories(request):
-    return{
-        'categories': Categories.objects.all()
-    }
+    return{'categories': Category.objects.filter(level=0)}

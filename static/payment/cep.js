@@ -1,10 +1,11 @@
-'use strict';
+
 
 const autoCompleteForms = (address) => {
+
+  document.getElementById("city").value = address.localidade
   document.getElementById("street").value = address.logradouro
   document.getElementById("district").value = address.bairro
-  document.getElementById("state").value = address.uf
-  
+  document.getElementById("state").value = address.uf  
   
 }
 

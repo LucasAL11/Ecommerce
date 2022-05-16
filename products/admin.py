@@ -1,24 +1,41 @@
+from unicodedata import name
+from django import forms 
 from django.contrib import admin
+from mptt.admin import MPTTModelAdmin
 
-from django.db import models
-from .models import Categories,Brands,Products,Distributors
 
-# Register your models here.
-@admin.register(Categories)
-class categoryAdmin(admin.ModelAdmin):
-    list_display = ['category', 'slug']
-    populated_fields = {'slug': ('category',)}
+from .models import(
+    Category,
+    Products,
+    PdtImage,
+    ProductSpec,
+    PdtSpecValue,
+    ProductType,
+)
+
+admin.site.register(Category, MPTTModelAdmin)
+
+class PdtSpecOnline(admin.TabularInline):
+    model = ProductSpec
+
+@admin.register(ProductType)
+class PdtTypeAdmin(admin.ModelAdmin):
+    inlines = [
+        PdtSpecOnline,
+    ]
+
+class PdtImageInLine(admin.TabularInline):
+    model = PdtImage
+
+class PdtSpecValueInline(admin.TabularInline):
+    model = PdtSpecValue
 
 @admin.register(Products)
-class ProductsAdmin(admin.ModelAdmin):
-    list_display = ['product','brand','distributor','price','quantity_in_stock']
-    prepopulated_fields = {'Slug': ('product',)}
+class PdtAdmin(admin.ModelAdmin):
+    inlines = [
+        PdtSpecValueInline,
+        PdtImageInLine,
+    ]
+    prepopulated_fields = {'slug':('name',)}
 
-@admin.register(Brands)
-class BrandsAdmin(admin.ModelAdmin):
-    list_display = ['brand']
-
-@admin.register(Distributors)
-class DistributorAdmin(admin.ModelAdmin):
-    pass
 

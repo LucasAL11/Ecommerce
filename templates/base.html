@@ -50,7 +50,7 @@
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                       
                       {% for category in categories %}
-                        <li {% if category.slug == c.slug %}class="selected" {% endif %} ><a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category|title }}</a></li>
+                        <li {% if category.slug == category.slug %} class="selected" {% endif %} ><a class="dropdown-item" href="{{ category.get_absolute_url }}"> {{ category.name }} </a></li>
                       {% endfor %}
                     </ul>
                   </li>

@@ -47,22 +47,30 @@
                       Nome completo obrigatorio
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-3">
                     <label for="cep" class="form-label">CEP </label>
                     <input type="cep" class="form-control" id="cep" placeholder="12345-678">
                     <div class="invalid-feedback">
                       numero do cep invalido
                     </div>
                   </div>
-                  <div class="col-2">
+                  <div class="col-3">
                     <label for="state" class="form-label">Pais</label>
                       <input type="text" class="form-control" id="country">
                   </div>
-                  <div class="col-4">
+                  <div class="col-3">
                     <label for="state" class="form-label">Estado</label>
-                      <input type="text" class="form-control" id="state">
+                      <input type="text" class="form-control" id="state" placeholder="Estado">
                   </div>
                   
+                  
+                  <div class="col-3">
+                    <label for="city" class="form-label">Cidade</label>
+                    <input type="text" class="form-control" id="city" placeholder="Cidade" required>
+                    <div class="invalid-feedback">
+                      Please enter your shipping address.
+                    </div>
+                  </div>
                   <div class="col-12">
                     <label for="address" class="form-label">Bairro</label>
                     <input type="text" class="form-control" id="district" placeholder="1234 Main St" required>

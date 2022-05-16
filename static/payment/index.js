@@ -9,6 +9,7 @@ client_secret = elem.getAttribute('data-secret');
 var elements = stripe.elements();
 var style = {
 base: {
+  
   color: "#000",
   lineHeight: '2.4',
   fontSize: '16px'
@@ -16,7 +17,7 @@ base: {
 };
 
 
-var card = elements.create("card", { style: style });
+var card = elements.create("card", { style: style,hidePostalCode:true });
 card.mount("#card-element");
 
 card.on('change', function(event) {
@@ -38,6 +39,8 @@ ev.preventDefault();
 
 var custName = document.getElementById("name").value;
 var custCountry = document.getElementById("country").value;
+var custState = document.getElementById("state").value;
+var custCity = document.getElementById("city").value;
 var custDistrict = document.getElementById("district").value;
 var custStreet = document.getElementById("street").value;
 var CustNumber = document.getElementById("number").value;
@@ -62,9 +65,14 @@ var custPhone = document.getElementById("phone").value;
           billing_details: {
             address:{
                 line1:custDistrict,
-                line2:custStreet
+                line2:custStreet,
+                city:custCity,
+                state:custState,
+                country:custCountry,
+                postal_code:cep,
             },
-            name: custName
+            name: custName,
+            phone:custPhone 
           },
         }
       }).then(function(result) {
@@ -86,8 +94,4 @@ var custPhone = document.getElementById("phone").value;
     },
     error: function (xhr, errmsg, err) {},
   });
-
-
-
-
 });
